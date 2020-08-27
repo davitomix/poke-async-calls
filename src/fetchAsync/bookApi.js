@@ -25,3 +25,12 @@ export const addBook = async book => {
     return handleError(errro);
   }
 };
+
+export const removeBook = async id => {
+  try {
+    const response = await fetch(baseUrl + id, { method: 'DELETE' });
+    return response;
+  } catch (error) {
+    return handleError(error);
+  }
+};
