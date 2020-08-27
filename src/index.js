@@ -1,5 +1,5 @@
 import { handleResponse, handleError } from './apiUtils';
-const baseUrl = 'http://localhost:3000/api/v1/characters';
+const baseUrl = 'http://localhos:3000/api/v1/characters';
 
 const getBooks = async () => {
   try {
