@@ -106,7 +106,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _apiUtils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./apiUtils */ \"./src/apiUtils.js\");\n\nconst baseUrl = 'http://localhos:3000/api/v1/characters';\n\nconst getBooks = async () => {\n  try {\n    const response = await fetch(baseUrl);\n    return Object(_apiUtils__WEBPACK_IMPORTED_MODULE_0__[\"handleResponse\"])(response);\n  } catch (error) {\n    return Object(_apiUtils__WEBPACK_IMPORTED_MODULE_0__[\"handleError\"])(error);\n  }\n};\n\nconst saveBook = book => {};\n\nconst books = getBooks().then(book => console.log(book));\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _apiUtils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./apiUtils */ \"./src/apiUtils.js\");\n\nconst baseUrl = 'http://localhost:3000/api/v1/characters';\n\nconst getBooks = async () => {\n  try {\n    const response = await fetch(baseUrl);\n    return Object(_apiUtils__WEBPACK_IMPORTED_MODULE_0__[\"handleResponse\"])(response);\n  } catch (error) {\n    return Object(_apiUtils__WEBPACK_IMPORTED_MODULE_0__[\"handleError\"])(error);\n  }\n};\n\nconst addBook = book => {};\n\nconst books = getBooks().then(book => console.log(book));\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 

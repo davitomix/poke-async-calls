@@ -1,5 +1,5 @@
 import { handleResponse, handleError } from './apiUtils';
-const baseUrl = 'http://localhos:3000/api/v1/characters';
+const baseUrl = 'http://localhost:3000/api/v1/characters';
 
 const getBooks = async () => {
   try {
@@ -10,6 +10,6 @@ const getBooks = async () => {
   }
 };
 
-const saveBook = book => {};
+const addBook = book => {};
 
 const books = getBooks().then(book => console.log(book));
