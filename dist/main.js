@@ -86,14 +86,27 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/apiUtils.js":
+/*!*************************!*\
+  !*** ./src/apiUtils.js ***!
+  \*************************/
+/*! exports provided: handleResponse, handleError */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"handleResponse\", function() { return handleResponse; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"handleError\", function() { return handleError; });\nconst handleResponse = async response => {\n  if (response.ok) return response.json();\n  if (response.status === 400) {\n    const error = await response.text();\n    throw new Error(error);\n  }\n  throw new Error('Network response error');\n};\n\nconst handleError = error => {\n  console.log('API call failed.' + error);\n  throw error;\n};\n\n\n//# sourceURL=webpack:///./src/apiUtils.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("console.log('lalala');\n\n\n//# sourceURL=webpack:///./src/index.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _apiUtils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./apiUtils */ \"./src/apiUtils.js\");\n\nconst baseUrl = 'http://localhost:3000/api/v1/characters';\n\nconst getBooks = async () => {\n  try {\n    const response = await fetch(baseUrl);\n    return Object(_apiUtils__WEBPACK_IMPORTED_MODULE_0__[\"handleResponse\"])(response);\n  } catch (error) {\n    return Object(_apiUtils__WEBPACK_IMPORTED_MODULE_0__[\"handleError\"])(error);\n  }\n};\n\nconst saveBook = book => {};\n\nconst books = getBooks().then(book => console.log(book));\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
