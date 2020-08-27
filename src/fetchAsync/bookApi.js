@@ -29,7 +29,7 @@ export const addBook = async book => {
 export const removeBook = async id => {
   try {
     const response = await fetch(baseUrl + id, { method: 'DELETE' });
-    return response;
+    return Promise.resolve();
   } catch (error) {
     return handleError(error);
   }

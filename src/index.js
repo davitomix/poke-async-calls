@@ -1,6 +1,6 @@
 import { getBooks, addBook, removeBook } from './fetchAsync/bookApi';
 
-const remove = removeBook(21);
+// const remove = removeBook(18);
 // getBooks().then(book => console.log(book));
 
 const newBook = {
