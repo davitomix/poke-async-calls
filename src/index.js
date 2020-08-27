@@ -1,3 +1,16 @@
-import { getBooks } from './fetchAsync/bookApi';
+import { getBooks, addBook } from './fetchAsync/bookApi';
 
-const books = getBooks().then(book => console.log(book));
+getBooks().then(book => console.log(book));
+
+const newBook = {
+  name: 'aaaa',
+  catchphrase: 'xxxx',
+};
+
+const updateBook = {
+  id: 23,
+  name: 'updated',
+  catchphrase: 'updated',
+};
+
+// const add = addBook(updateBook);
