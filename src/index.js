@@ -1,17 +1,26 @@
 import { getBooks, addBook, removeBook } from './fetchAsync/bookApi';
 
-// const remove = removeBook(18);
-// getBooks().then(book => console.log(book));
+getBooks().then(book => console.log(book));
 
 const newBook = {
-  name: 'aaaa',
-  catchphrase: 'xxxx',
+  title: 'xxxxx',
+  author: 'xxxx',
+  category: 'xxx',
+  pages: 'xxxxx',
+  progress: 'xxxx',
 };
 
 const updateBook = {
-  id: 23,
-  name: 'updated',
-  catchphrase: 'updated',
+  id: 11,
+  title: 'uuuuuu',
+  author: 'uuuuuu',
+  category: 'uuuuuu',
+  pages: 'uuuuuu',
+  progress: 'uuuuuu',
 };
 
-// const add = addBook(updateBook);
+// const add = addBook(newBook);
+
+// const update = addBook(updateBook);
+
+// const remove = removeBook(9);
