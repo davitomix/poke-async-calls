@@ -1,6 +1,6 @@
 import { getBooks, addBook, removeBook } from './fetchAsync/bookApi';
 
-getBooks().then(book => console.log(book));
+//getBooks().then(book => console.log(book));
 
 const newBook = {
   title: 'xxxxx',

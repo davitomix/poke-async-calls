@@ -22,7 +22,7 @@ export const addBook = async book => {
     });
     return handleResponse(response);
   } catch (error) {
-    return handleError(errro);
+    return handleError(error);
   }
 };
 
