@@ -94,19 +94,19 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"handleResponse\", function() { return handleResponse; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"handleError\", function() { return handleError; });\nconst handleResponse = async response => {\n  if (response.ok) return response.data;\n  // if (response.ok) return response.json();\n  if (response.status === 400) {\n    const error = await response.text();\n    throw new Error(error);\n  }\n  throw new Error('Network response error');\n};\n\nconst handleError = error => {\n  console.log('API call failed.' + error);\n  throw error;\n};\n\n\n//# sourceURL=webpack:///./src/fetchAsync/apiUtils.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"handleResponse\", function() { return handleResponse; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"handleError\", function() { return handleError; });\nconst handleResponse = async response => {\n  if (response.ok) return response.json();\n  if (response.status === 400) {\n    const error = await response.text();\n    throw new Error(error);\n  }\n  throw new Error('Network response error');\n};\n\nconst handleError = error => {\n  console.log('API call failed.' + error);\n  throw error;\n};\n\n\n//# sourceURL=webpack:///./src/fetchAsync/apiUtils.js?");
 
 /***/ }),
 
-/***/ "./src/fetchAsync/bookApi.js":
+/***/ "./src/fetchAsync/pokeApi.js":
 /*!***********************************!*\
-  !*** ./src/fetchAsync/bookApi.js ***!
+  !*** ./src/fetchAsync/pokeApi.js ***!
   \***********************************/
-/*! exports provided: getBooks, addBook, removeBook */
+/*! exports provided: getPokemon, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getBooks\", function() { return getBooks; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"addBook\", function() { return addBook; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"removeBook\", function() { return removeBook; });\n/* harmony import */ var _apiUtils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./apiUtils */ \"./src/fetchAsync/apiUtils.js\");\n\nconst baseUrl = 'http://localhost:3000/api/v1/books/';\n\nconst getBooks = async () => {\n  try {\n    const response = await fetch(baseUrl);\n    return Object(_apiUtils__WEBPACK_IMPORTED_MODULE_0__[\"handleResponse\"])(response);\n  } catch (error) {\n    return Object(_apiUtils__WEBPACK_IMPORTED_MODULE_0__[\"handleError\"])(error);\n  }\n};\n\nconst addBook = async book => {\n  try {\n    const response = await fetch(baseUrl + (book.id || ''), {\n      method: book.id ? 'PUT' : 'POST',\n      headers: { 'content-type': 'application/json' },\n      body: JSON.stringify({\n        ...book,\n        id: parseInt(book.id, 10),\n      }),\n    });\n    return Object(_apiUtils__WEBPACK_IMPORTED_MODULE_0__[\"handleResponse\"])(response);\n  } catch (error) {\n    return Object(_apiUtils__WEBPACK_IMPORTED_MODULE_0__[\"handleError\"])(error);\n  }\n};\n\nconst removeBook = async id => {\n  try {\n    const response = await fetch(baseUrl + id, { method: 'DELETE' });\n    return Promise.resolve();\n  } catch (error) {\n    return Object(_apiUtils__WEBPACK_IMPORTED_MODULE_0__[\"handleError\"])(error);\n  }\n};\n\n\n//# sourceURL=webpack:///./src/fetchAsync/bookApi.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getPokemon\", function() { return getPokemon; });\n/* harmony import */ var _apiUtils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./apiUtils */ \"./src/fetchAsync/apiUtils.js\");\n\nconst baseUrl = 'https://pokeapi.co/api/v2/';\n\nconst getPokemonsArray = () => {\n  const max = 200, min = 1;\n  const pokeIdArray = [];\n  let randId;\n  for (let i = 0; i < 10; i++) {\n    randId = Math.floor(Math.random() * (max - 1)) + min;\n    pokeIdArray.push(randId);\n  }\n  return pokeIdArray;\n}\n\nconst getPokemon = async (pokemon) => {\n  try {\n    const response = await fetch(baseUrl + `pokemon/${pokemon}`);\n    return Object(_apiUtils__WEBPACK_IMPORTED_MODULE_0__[\"handleResponse\"])(response);\n  } catch (error) {\n    return Object(_apiUtils__WEBPACK_IMPORTED_MODULE_0__[\"handleError\"])(error);\n  }\n};\n\nconst getPokemons = async () => {\n  return Promise.all(getPokemonsArray().map(pokeId => getPokemon(pokeId)));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (getPokemons);\n\n\n//# sourceURL=webpack:///./src/fetchAsync/pokeApi.js?");
 
 /***/ }),
 
@@ -118,7 +118,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _fetchAsync_bookApi__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./fetchAsync/bookApi */ \"./src/fetchAsync/bookApi.js\");\n\n\n//getBooks().then(book => console.log(book));\n\nconst newBook = {\n  title: 'xxxxx',\n  author: 'xxxx',\n  category: 'xxx',\n  pages: 'xxxxx',\n  progress: 'xxxx',\n};\n\nconst updateBook = {\n  id: 11,\n  title: 'uuuuuu',\n  author: 'uuuuuu',\n  category: 'uuuuuu',\n  pages: 'uuuuuu',\n  progress: 'uuuuuu',\n};\n\n// const add = addBook(newBook);\n\n// const update = addBook(updateBook);\n\n// const remove = removeBook(9);\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _fetchAsync_pokeApi__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./fetchAsync/pokeApi */ \"./src/fetchAsync/pokeApi.js\");\n\n\n\nObject(_fetchAsync_pokeApi__WEBPACK_IMPORTED_MODULE_0__[\"getPokemon\"])('132').then(poke => console.log(poke.name));\nObject(_fetchAsync_pokeApi__WEBPACK_IMPORTED_MODULE_0__[\"default\"])().then(pokemons => pokemons.map(pokemon => console.log(pokemon.name)));\n\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 

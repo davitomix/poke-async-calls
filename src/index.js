@@ -1,26 +1,7 @@
-import { getBooks, addBook, removeBook } from './fetchAsync/bookApi';
+import getPokemons from "./fetchAsync/pokeApi";
+import { getPokemon } from './fetchAsync/pokeApi'
 
-//getBooks().then(book => console.log(book));
+getPokemon('132').then(poke => console.log(poke.name));
+getPokemons().then(pokemons => pokemons.map(pokemon => console.log(pokemon.name)));
 
-const newBook = {
-  title: 'xxxxx',
-  author: 'xxxx',
-  category: 'xxx',
-  pages: 'xxxxx',
-  progress: 'xxxx',
-};
 
-const updateBook = {
-  id: 11,
-  title: 'uuuuuu',
-  author: 'uuuuuu',
-  category: 'uuuuuu',
-  pages: 'uuuuuu',
-  progress: 'uuuuuu',
-};
-
-// const add = addBook(newBook);
-
-// const update = addBook(updateBook);
-
-// const remove = removeBook(9);
